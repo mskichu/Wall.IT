@@ -1,0 +1,20 @@
+.modal-header
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    h4.modal-title Edit Categories
+.modal-body
+    .container
+        table.table
+            tr
+                th Name
+                th
+                th
+            tr(ng-repeat="category in categories")
+                td {{ category.name }}
+                td(ng-controller="CategoryUpdateCtrl" ng-click="getCategory($parent.category)")
+                    a.btnnew(role='button', data-toggle='modal', data-target="{{ '#editCategory'+$parent.category._id }}") Edit
+
+                    .modal.fade(ng-attr-id="{{'editCategory' + $parent.category._id }}", tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                        .modal-dialog
+                            .modal-content(ng-include="'/partials/categories/category-update'")
+                td
+                    input.btn.btn-primary.btn-sm(type="submit", ng-click="remove(category)", value="Delete", data-dismiss='modal')

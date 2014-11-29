@@ -1,0 +1,25 @@
+form.form-horizontal(name="createCostForm")
+    .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Add Cost
+    .modal-body
+        .container
+            .well
+                fieldset
+                    legend Create New Cost
+                    .form-group
+                        label.col-md-2.control-label(for="category") Category
+                        .col-md-10
+                            select.form-control(ng-model="cost.category", required)
+                                option(ng-repeat="category in categories", value='{{category.name}}') {{category.name}}
+                    .form-group
+                        label.col-md-2.control-label(for="value") Amout in BGN
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Cost Amount", ng-model="cost.value", required)
+                    .form-group
+                        label.col-md-2.control-label(for="description") Description (optional)
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Description", ng-model="cost.description")
+                    .pull-right
+    .modal-footer
+        input.btnnew(type="submit", ng-click="createCost(cost)", ng-disabled="createCostForm.$invalid" value="Create", data-dismiss='modal')

@@ -1,0 +1,50 @@
+.modal-header
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    h4.modal-title Edit Costs
+.modal-body
+    .container
+        .row
+        form.form-horizontal(name="filterCostForm")
+            .form-group
+                .col-md-2
+                    strong Category:
+                .col-md-6
+                    select.form-control(ng-model="filter.category", ng-change="init()")
+                        option(value="") All categories
+                        option(ng-repeat="category in categories", value="{{category._id}}") {{ category.name }}
+                .col-md-2
+                    strong Page:
+                .col-md-2
+                    input.form-control(type="number" min="1", default="1", ng-model="filter.page", ng-change="init()")
+            .form-group
+                .col-md-2
+                    strong From:
+                .col-md-4
+                    input.form-control(type="date", ng-init="filter.from = (firstDay | date:'yyyy-MM-dd')", ng-model="filter.from", ng-change="init()")
+                .col-md-2
+                    strong To:
+                .col-md-4
+                    input.form-control(type="date", ng-init="filter.to = (lastDay | date:'yyyy-MM-dd')", ng-model="filter.to", ng-change="init()")
+
+        br
+        table.table.table-striped.table-condensed.table-responsive.table-hover
+            tr
+                th Date
+                th Category
+                th Amount in BGN
+                th Description
+                th
+                th
+            tr(ng-repeat="cost in costs")
+                td {{ cost.creationDate | date }}
+                td {{ cost.category.name }}
+                td {{ cost.value }}
+                td {{ cost.description }}
+                td(ng-controller="CostUpdateCtrl" ng-click="getCost($parent.cost)")
+                    a.btnnew(data-toggle='modal', data-target="{{ '#editCost' + $parent.cost._id }}") Edit
+
+                    .modal.fade(ng-attr-id="{{'editCost' + $parent.cost._id }}", tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                        .modal-dialog
+                            .modal-content(ng-include="'/partials/costs/cost-update'")
+                td
+                    input.btnnew(type="submit", ng-click="remove(cost)", value="Delete", data-dismiss='modal')

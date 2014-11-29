@@ -1,0 +1,28 @@
+link(href="assets/css/table.css" rel="stylesheet")
+.container
+    .row
+        form.form-horizontal(name="filterCategoryForm")
+            .col-md-1
+                strong From:
+            .col-md-2
+                input.form-control(type="date", ng-init="filter.from = (firstDay | date:'yyyy-MM-dd')", ng-model="filter.from", ng-change="loadCategories()")
+            .col-md-1
+                strong To:
+            .col-md-2
+                input.form-control(type="date", ng-init="filter.to = (lastDay | date:'yyyy-MM-dd')", ng-model="filter.to", ng-change="loadCategories()")
+    br
+    table.display
+        thead
+            tr
+                th Category
+                th Amount in BGN
+        tbody
+            tr(ng-repeat="category in categories")
+                td {{ category.name }}
+                td {{ category.total }}
+        tfoot
+            tr
+                td
+                    strong Total Amount in BGN:
+                td
+                    strong {{ totalSum }}

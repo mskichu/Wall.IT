@@ -1,0 +1,15 @@
+link(href='assets/css/login.css', rel='stylesheet')
+.container
+    .row
+        .col-lg-offset-4.col-lg-4(style='margin-top: 100px;')
+            .block-unit(style='text-align: center; padding: 8px 8px 8px 8px;')
+                br
+                br
+                form#signupForm.cmxform
+                    fieldset
+                        p
+                            input#username(ng-model='user.username', type='text', placeholder='Username')
+                            input#password(ng-model='user.password', type='password', placeholder='Password')
+                        button.btn-success.btn.btn-large(ng-click="login(user)") Login
+                        | &nbsp;
+                        a.btn.btn-primary(href="#/signup") Sign Up

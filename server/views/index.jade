@@ -1,0 +1,33 @@
+extends includes/layout
+block main-content
+    .navbar-nav.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='#/home')
+                    img(src='assets/img/logo30.png', alt='')
+                    |  Wall.IT
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href='#/home') Home
+                    li.dropdown
+                        a.dropdown-toggle(href='#/home', data-toggle='dropdown')
+                            | Stats
+                            b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href='#/costsstat') Costs Stats
+                                li
+                                    a(href='#/categoriesstat') Categories Stats
+                ul.nav.navbar-nav.pull-right(ng-controller="LoginCtrl")
+                    li
+                        a(ng-show="identity.isAuthenticated()") Hello, {{ identity.currentUser.username }}
+                    li
+                        a(ng-show="identity.isAuthenticated()", ng-click="logout()") Logout
+
+    section
+        div(ng-view, ng-cloak)

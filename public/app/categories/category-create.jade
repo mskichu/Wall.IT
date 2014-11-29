@@ -1,0 +1,16 @@
+form.form-horizontal(name="createCategoryForm")
+    .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Add Category
+    .modal-body
+        .container
+            .well
+                form.form-horizontal(name="createCategoryForm")
+                    fieldset
+                        legend Create New Category
+                        .form-group
+                            label.col-md-2.control-label(for="name") Name
+                            .col-md-10
+                                input.form-control(type="text", placeholder="Category name", ng-model="category.name", required)
+    .modal-footer
+        input.btnnew(type="submit", ng-click="createCategory(category)", ng-disabled="createCategoryForm.$invalid" value="Create", data-dismiss='modal')

@@ -1,0 +1,16 @@
+form.form-horizontal(name="updateCategoryForm")
+    .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Edit Category
+    .modal-body
+        .container
+            .well
+                fieldset
+                    legend Edit Category
+                    .form-group
+                        label.col-md-2.control-label(for="name") Name
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Category Name", ng-model="category.name", required)
+    .modal-footer
+        input.btn.btn-primary(type="submit", ng-click="update(category)", ng-disabled="updateCategoryForm.$invalid" value="Update", data-dismiss='modal')
+        button.btn.btn-default(type='button', data-dismiss='modal') Close

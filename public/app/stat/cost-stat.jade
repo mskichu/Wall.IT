@@ -1,0 +1,44 @@
+link(href="assets/css/table.css" rel="stylesheet")
+.container
+    .row
+        form.form-horizontal(name="filterCostForm")
+            .col-md-1
+                strong Category:
+            .col-md-2
+                select.form-control(ng-model="filter.category", ng-change="loadCosts()")
+                    option(value="") All categories
+                    option(ng-repeat="category in categories", value="{{category._id}}") {{ category.name }}
+            .col-md-1
+                strong From:
+            .col-md-2
+                input.form-control(type="date", ng-init="filter.from = (firstDay | date:'yyyy-MM-dd')", ng-model="filter.from", ng-change="loadCosts()")
+            .col-md-1
+                strong To:
+            .col-md-2
+                input.form-control(type="date", ng-init="filter.to = (lastDay | date:'yyyy-MM-dd')", ng-model="filter.to", ng-change="loadCosts()")
+            .col-md-1
+                strong Page:
+            .col-md-1
+                input.form-control(type="number" min="1", default="1", ng-model="filter.page", ng-change="loadCosts()")
+    br
+    table.display
+        thead
+            tr
+                th Date
+                th Category
+                th Amount in BGN
+                th Description
+        tbody
+            tr(ng-repeat="cost in costs")
+                td {{ cost.creationDate | date }}
+                td {{ cost.category.name }}
+                td {{ cost.value }}
+                td {{ cost.description }}
+        tfoot
+            tr
+                td
+                td
+                    strong Total Amount in BGN:
+                td
+                    strong {{ sum }}
+                td
