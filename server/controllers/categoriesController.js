@@ -25,7 +25,7 @@ module.exports = {
     update: function(req, res, callback){
         data.categories.update(req.body, function(err, success){
             if(err){
-                res.status(400).send('Unable to update the requested cost');
+                res.status(400).send('Unable to update the requested category');
             } else {
                 res.send(success);
             }

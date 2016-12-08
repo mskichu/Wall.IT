@@ -13,10 +13,13 @@ app.controller('CategoriesStatCtrl', function($scope, costsService, categoriesSe
                     category.total = costs.reduce(function (total, a) {
                         return Number.parseFloat(total) + Number.parseFloat(a.value);
                     }, 0);
-                    categories.push(category);
+                    category.total = Math.round(category.total * 100) / 100;
+                    
                     $scope.categories = categories;
                     $scope.totalSum += category.total;
                 });
+
+                categories.push(category);
             });
         });
     };

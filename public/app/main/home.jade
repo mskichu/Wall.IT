@@ -8,7 +8,7 @@ link(href='assets/css/font-style.css', rel='stylesheet')
                 hr
                 .cont
                     a.btnnew(role='button', data-toggle='modal', data-target='#newCost')
-                        span.glyphicon.glyphicon-euro(aria-hidden='true')
+                        span.glyphicon.glyphicon-gbp(aria-hidden='true')
                         |  Add Cost
                 br
                 span.class
@@ -16,6 +16,12 @@ link(href='assets/css/font-style.css', rel='stylesheet')
                     a.btnnew(role='button', data-toggle='modal', data-target='#editCosts')
                         span.glyphicon.glyphicon-edit(aria-hidden='true')
                         |  Edit Costs
+                br
+                span.class
+                .cont
+                    a.btnnew(role='button', data-toggle='modal', data-target='#budget')
+                        span.glyphicon.glyphicon-briefcase(aria-hidden='true')
+                        |  Set Budget
 
         #newCost.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
             .modal-dialog
@@ -25,7 +31,9 @@ link(href='assets/css/font-style.css', rel='stylesheet')
             .modal-dialog
                 .modal-content(ng-controller="CostsListCtrl", ng-include="'/partials/costs/costs-list'")
 
-
+        #budget.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+            .modal-dialog
+                .modal-content(ng-controller="BudgetCtrl", ng-include="'/partials/costs/budget'")
 
         .col-sm-3.col-lg-3
             .dash-unit

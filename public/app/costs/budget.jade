@@ -1,0 +1,22 @@
+form.form-horizontal(name="budgetForm")
+    .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Set Monthly Budget
+    .modal-body
+        .container
+            .well
+                fieldset
+                    legend Monthly Budget
+                    .form-group(style="margin-bottom:1em;")
+                        .col-md-2
+                            strong Year
+                        .col-md-10
+                            select.form-control(ng-model="year", ng-change="loadYearStats()")
+                                option(ng-repeat="year in [2016,2017,2018,2019,2020]", value="{{year}}") {{ year }}
+                    .form-group(ng-repeat="category in budget.categories")
+                        label.col-md-2.control-label(for="{{category.name}}") {{category.name}}
+                        .col-md-10
+                            input.form-control(type="text", value="{{category.budget}}" ng-model="category.budget", required)
+                    .pull-right
+    .modal-footer
+        input.btnnew(type="submit", ng-click="setBudget()", ng-disabled="budgetForm.$invalid" value="Save", data-dismiss='modal')

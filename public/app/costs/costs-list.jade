@@ -12,10 +12,6 @@
                     select.form-control(ng-model="filter.category", ng-change="init()")
                         option(value="") All categories
                         option(ng-repeat="category in categories", value="{{category._id}}") {{ category.name }}
-                .col-md-2
-                    strong Page:
-                .col-md-2
-                    input.form-control(type="number" min="1", default="1", ng-model="filter.page", ng-change="init()")
             .form-group
                 .col-md-2
                     strong From:
@@ -31,7 +27,7 @@
             tr
                 th Date
                 th Category
-                th Amount in BGN
+                th Amount in GBP
                 th Description
                 th
                 th

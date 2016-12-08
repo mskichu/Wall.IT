@@ -26,8 +26,7 @@ app.factory('costsService', ['$http', '$q', function($http, $q) {
                 var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
                 options.from = options.from || firstDay;
                 options.to = options.to || lastDay;
-                url += '?page=' + options.page;
-                url += '&from=' + options.from;
+                url += '?from=' + options.from;
                 url += '&to=' + options.to;
                 if(options.category)
                 {

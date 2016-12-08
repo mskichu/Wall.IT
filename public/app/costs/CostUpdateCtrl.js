@@ -1,4 +1,4 @@
-app.controller('CostUpdateCtrl', function($scope, $rootScope, notifier, costsService, categoriesService) {
+app.controller('CostUpdateCtrl', function($scope, $rootScope, $filter, notifier, costsService, categoriesService) {
     categoriesService.all().then(function(response){
         $scope.categories = response;
     });
@@ -7,6 +7,7 @@ app.controller('CostUpdateCtrl', function($scope, $rootScope, notifier, costsSer
     $scope.getCost = function(costUpdate){
         costsService.findById(costUpdate._id).then(function(res){
             $scope.cost = res;
+            $scope.cost.creationDate = $filter("date")(res.creationDate, 'yyyy-MM-dd');
         });
     };
 

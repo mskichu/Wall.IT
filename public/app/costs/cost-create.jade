@@ -13,7 +13,11 @@ form.form-horizontal(name="createCostForm")
                             select.form-control(ng-model="cost.category", required)
                                 option(ng-repeat="category in categories", value='{{category.name}}') {{category.name}}
                     .form-group
-                        label.col-md-2.control-label(for="value") Amout in BGN
+                        label.col-md-2.control-label(for="creationDate") Date
+                        .col-md-10
+                            input.form-control(type="date", value="{{date}}" ng-model="cost.creationDate", required)
+                    .form-group
+                        label.col-md-2.control-label(for="value") Amout in GBP
                         .col-md-10
                             input.form-control(type="text", placeholder="Cost Amount", ng-model="cost.value", required)
                     .form-group

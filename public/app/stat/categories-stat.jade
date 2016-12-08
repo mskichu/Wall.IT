@@ -15,7 +15,7 @@ link(href="assets/css/table.css" rel="stylesheet")
         thead
             tr
                 th Category
-                th Amount in BGN
+                th Amount in GBP
         tbody
             tr(ng-repeat="category in categories")
                 td {{ category.name }}
@@ -23,6 +23,6 @@ link(href="assets/css/table.css" rel="stylesheet")
         tfoot
             tr
                 td
-                    strong Total Amount in BGN:
+                    strong Total Amount in GBP:
                 td
-                    strong {{ totalSum }}
+                    strong {{ totalSum.toFixed(2) }}

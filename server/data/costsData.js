@@ -8,7 +8,7 @@ module.exports = {
             costModel.category = res;
             usersData.findById(costModel.user, function (err, user) {
                 costModel.user = user._id;
-                costModel.creationDate = new Date();
+                //costModel.creationDate = new Date();
                 if(costModel.value <= 0){
                     var err = new Error();
                     err.message = 'The value should be grater than zero!';
@@ -50,7 +50,14 @@ module.exports = {
                         return x[options.sortBy] > y[options.sortBy] ? -1 : x[options.sortBy] < y[options.sortBy] ? 1 : 0;
                     }
                 });
-                var paginated = sorted.slice(options.page * options.size, options.size + options.page * options.size);
+                var paginated;
+                if(options.page)
+                {
+                    paginated = sorted.slice(options.page * options.size, options.size + options.page * options.size);    
+                } else {
+                    paginated = sorted;
+                }
+                
                 if (callback) {
                     callback(err, paginated);
                 }

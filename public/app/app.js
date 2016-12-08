@@ -51,6 +51,11 @@ app.config(function($routeProvider) {
             controller: 'CostsCreateCtrl',
             resolve: routeUserChecks.authenticated
         })
+        .when('/costs/budget', {
+            templateUrl: '/aprtials/costs/budget',
+            controller: 'BudgetCtrl',
+            resolve: routeUserChecks.authenticated 
+        })
         .when('/costs/list', {
             templateUrl: '/partials/costs/costs-list',
             controller: 'CostsListCtrl',
@@ -74,6 +79,11 @@ app.config(function($routeProvider) {
         .when('/categoriesstat/', {
             templateUrl: '/partials/stat/categories-stat',
             controller: 'CategoriesStatCtrl',
+            resolve: routeUserChecks.authenticated
+        })
+        .when('/yearlystat/', {
+            templateUrl: '/partials/stat/yearly-stat',
+            controller: 'YearlyStatCtrl',
             resolve: routeUserChecks.authenticated
         })
         .when('/signup', {

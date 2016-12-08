@@ -1,0 +1,148 @@
+link(href="assets/css/table.css" rel="stylesheet")
+.container
+    .row(style="margin-bottom:1em;")
+        form.form-horizontal(name="filterYearForm")
+            .col-md-1
+                strong Year:
+            .col-md-2
+                select.form-control(ng-model="year", ng-change="loadYearStats()")
+                    option(ng-repeat="year in [2016,2017,2018,2019,2020]", value="{{year}}") {{ year }}
+    table.display
+        thead
+            tr
+                th Category
+                th Budget
+                th Jan
+                th Jan Diff
+                th Feb
+                th Feb Diff
+                th Mar
+                th Mar Diff
+                th Apr
+                th Apr Diff
+                th May
+                th May Diff
+                th Jun
+                th Jun Diff
+        tbody
+            tr(ng-repeat="category in categories")
+                td {{ category.name }}
+                td {{ category.budget.toFixed(2) }}
+                td {{ category.months[0].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[0] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[0]).toFixed(2) }}
+                td {{ category.months[1].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[1] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[1]).toFixed(2) }}
+                td {{ category.months[2].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[2] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[2]).toFixed(2) }}
+                td {{ category.months[3].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[3] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[3]).toFixed(2) }}
+                td {{ category.months[4].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[4] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[4]).toFixed(2) }}
+                td {{ category.months[5].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[5] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[5]).toFixed(2) }}
+        tfoot
+            tr
+                td
+                    strong Total Amount in GBP:
+                td
+                    strong {{ budgetSum.toFixed(2) }}
+                td
+                    strong {{ totalSum[0].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[0] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[0]).toFixed(2) }}
+                td
+                    strong {{ totalSum[1].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[1] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[1]).toFixed(2) }}
+                td
+                    strong {{ totalSum[2].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[2] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[2]).toFixed(2) }}
+                td
+                    strong {{ totalSum[3].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[3] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[3]).toFixed(2) }}
+                td
+                    strong {{ totalSum[4].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[4] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[4]).toFixed(2) }}
+                td
+                    strong {{ totalSum[5].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[5] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[5]).toFixed(2) }}
+    br
+    table.display
+        thead
+            tr
+                th Category
+                th Budget
+                th Jul
+                th Jul Diff
+                th Aug
+                th Aug Diff
+                th Sep
+                th Sep Diff
+                th Oct
+                th Oct Diff
+                th Nov
+                th Nov Diff
+                th Dec
+                th Dec Diff
+        tbody
+            tr(ng-repeat="category in categories")
+                td {{ category.name }}
+                td {{ category.budget.toFixed(2) }}
+                td {{ category.months[6].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[6] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[6]).toFixed(2) }}
+                td {{ category.months[7].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[7] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[7]).toFixed(2) }}
+                td {{ category.months[8].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[8] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[8]).toFixed(2) }}
+                td {{ category.months[9].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[9] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[9]).toFixed(2) }}
+                td {{ category.months[10].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[10] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[10]).toFixed(2) }}
+                td {{ category.months[11].toFixed(2) }}
+                td 
+                    span(ng-class="category.budget - category.months[11] > 0 ? 'txtgreen':'txtred'") {{ (category.budget - category.months[11]).toFixed(2) }}
+        tfoot
+            tr
+                td
+                    strong Total Amount in GBP:
+                td
+                    strong {{ budgetSum.toFixed(2) }}
+                td
+                    strong {{ totalSum[6].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[6] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[6]).toFixed(2) }}
+                td
+                    strong {{ totalSum[7].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[7] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[7]).toFixed(2) }}
+                td
+                    strong {{ totalSum[8].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[8] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[8]).toFixed(2) }}
+                td
+                    strong {{ totalSum[9].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[9] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[9]).toFixed(2) }}
+                td
+                    strong {{ totalSum[10].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[10] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[10]).toFixed(2) }}
+                td
+                    strong {{ totalSum[11].toFixed(2) }}
+                td 
+                    span(ng-class="budgetSum - totalSum[11] > 0 ? 'txtgreen':'txtred'") {{ (budgetSum - totalSum[11]).toFixed(2) }}
