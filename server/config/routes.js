@@ -1,5 +1,6 @@
 var auth = require('./auth'),
     controllers = require('../controllers');
+//some changes
 
 module.exports = function(app) {
     app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
